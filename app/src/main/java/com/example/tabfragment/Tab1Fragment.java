@@ -19,19 +19,20 @@ public class Tab1Fragment extends Fragment {
             R.drawable.ic_6, R.drawable.ic_7, R.drawable.ic_8, R.drawable.ic_f9};
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab1fragment, container, false);
         gridView = view.findViewById(R.id.grid_view);
+        MainAdapter mainAdapter = new MainAdapter(getContext(), text, images);
+        gridView.setAdapter(mainAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "you clicked"+text[+position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "you clicked" + text[+position], Toast.LENGTH_SHORT).show();
             }
         });
-        MainAdapter mainAdapter = new MainAdapter(getActivity(), text , images);
+
         return view;
     }
 }
